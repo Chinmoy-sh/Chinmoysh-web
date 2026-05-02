@@ -4,76 +4,82 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CHINMOY | CEO</title>
+    <title>Chinmoy Kumar Biswas | CEO & Developer</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Chinmoy Kumar Biswas | CEO & Developer">
+    <meta name="description"
+        content="Chinmoy Kumar Biswas is a visionary CEO and accomplished developer, building with relentless simplicity and deep intention. Discover impactful solutions and clear engineering.">
+    <meta name="author" content="Chinmoy Kumar Biswas">
+    <meta name="keywords"
+        content="Chinmoy Kumar Biswas, CEO, Software Engineer, Technology Leadership, System Architecture, Chinmoy">
+    <link rel="canonical" href="https://chinmoysh.me/">
+
+    <!-- Open Graph / Facebook / LinkedIn / Discord -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://chinmoysh.me/">
+    <meta property="og:title" content="Chinmoy Kumar Biswas | CEO & Software Engineer">
+    <meta property="og:description"
+        content="Visionary CEO and accomplished software engineer. Building with relentless simplicity and deep intention.">
+    <meta property="og:image" content="https://chinmoysh.me/images/chinmoy-kumar-biswas.png">
+    <meta property="og:site_name" content="Chinmoy Kumar Biswas Portfolio">
+    <meta property="profile:first_name" content="Chinmoy">
+    <meta property="profile:last_name" content="Biswas">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://chinmoysh.me/">
+    <meta property="twitter:title" content="Chinmoy Kumar Biswas | CEO & Software Engineer">
+    <meta property="twitter:description"
+        content="Visionary CEO and accomplished software engineer. Building with relentless simplicity and deep intention.">
+    <meta property="twitter:image" content="https://chinmoysh.me/images/chinmoy-kumar-biswas.png">
+    <meta property="twitter:creator" content="@Chinmoy_SH_">
+
+    <!-- JSON-LD Structured Data (Person Schema) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Chinmoy Kumar Biswas",
+      "givenName": "Chinmoy",
+      "familyName": "Biswas",
+      "jobTitle": "Chief Executive Officer & Software Engineer",
+      "url": "https://chinmoysh.me/",
+      "image": "https://chinmoysh.me/images/chinmoy-kumar-biswas.png",
+      "sameAs": [
+        "https://github.com/Chinmoy-sh",
+        "https://x.com/Chinmoy_SH_",
+        "https://www.instagram.com/itz_me_chinmoy_impaired/",
+        "https://www.facebook.com/chinmoy.kumar.biswas.8.18.9.4.9"
+      ],
+      "knowsAbout": ["Software Engineering", "System Architecture", "Leadership", "Technology"]
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Fade-in keyframes */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Apply fade-in animation */
-        .fade-in {
-            animation: fadeIn 0.8s ease forwards;
-        }
-
-        /* Full viewport canvas behind everything */
-        #networkCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            background: #e0f2fe;
-            /* Tailwind sky-100 */
-        }
-
-        /* Social icon styling - circular with only logo and smooth hover color */
-        .social-icon {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 9999px;
-            /* full circle */
-            width: 44px;
-            height: 44px;
-            transition: color 0.3s ease;
-            color: rgba(14, 165, 233, 0.8);
-            /* Tailwind sky-500 */
-        }
-
-        .social-icon:hover {
-            color: rgba(14, 165, 233, 1);
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body oncontextmenu="return false;"
     class="min-h-screen flex flex-col justify-center items-center bg-sky-50 text-gray-800 p-6 overflow-hidden">
-    <!-- Background canvas -->
+
+    <!-- Background Canvas Particle System -->
     <canvas id="networkCanvas"></canvas>
 
     <header class="mb-8 fade-in opacity-0 translate-y-5" style="animation-delay: 0.2s;">
         <h1 class="text-4xl font-extrabold text-sky-600 uppercase text-center">Chinmoy Kumar Biswas</h1>
     </header>
 
-    <main class="max-w-3xl fade-in opacity-0 translate-y-5" style="animation-delay: 0.4s;">
+    <main class="max-w-3xl font-semibold fade-in opacity-0 translate-y-5" style="animation-delay: 0.4s; z-index: 10;">
         <p class="text-lg leading-relaxed mb-6 text-center">
             "Engineering isn't just writing lines of code. It's understanding how computers process, how systems
             actually work. I build with relentless simplicity and deep intention—stripping away the noise until only
             clarity remains. This is a reflection of how I think."
         </p>
-        <div id="currentTime" class="text-center text-gray-600 font-mono text-sm animate-pulse select-all"
-            aria-live="polite" aria-atomic="true" title="Current UTC time">
+
+        <!-- Chief Executive Text Restored to Original Position -->
+        <div class="text-center text-gray-600 font-mono text-sm animate-pulse select-all">
             —— Chief Executive
         </div>
 
@@ -82,7 +88,7 @@
             <!-- GitHub -->
             <a href="https://github.com/Chinmoy-sh" aria-label="GitHub" class="social-icon group" target="_blank"
                 rel="noopener noreferrer" title="GitHub">
-                <svg class="w-8 h-8 transition-colors" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path fill-rule="evenodd"
                         d="M12 2C6.477 2 2 6.484 2 12.019c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.866-.013-1.7-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.07-.608.07-.608 1.004.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.34-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.987 1.029-2.687-.104-.254-.446-1.27.098-2.646 0 0 .84-.27 2.75 1.025A9.563 9.563 0 0112 7.844a9.56 9.56 0 012.5.336c1.91-1.296 2.75-1.025 2.75-1.025.546 1.376.204 2.392.1 2.646.64.7 1.028 1.594 1.028 2.687 0 3.848-2.337 4.695-4.565 4.942.36.31.683.92.683 1.855 0 1.338-.012 2.419-.012 2.75 0 .268.18.58.688.482A10.019 10.019 0 0022 12.019C22 6.484 17.523 2 12 2z"
                         clip-rule="evenodd" />
@@ -92,7 +98,7 @@
             <!-- Facebook -->
             <a href="https://www.facebook.com/chinmoy.kumar.biswas.8.18.9.4.9" aria-label="Facebook"
                 class="social-icon group" target="_blank" rel="noopener noreferrer" title="Facebook">
-                <svg class="w-8 h-8 transition-colors" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path
                         d="M22.675 0h-21.35C.588 0 0 .588 0 1.313v21.375c0 .725.588 1.312 1.325 1.312h11.494V14.69h-3.13v-3.62h3.13V8.41c0-3.1 1.894-4.788 4.66-4.788 1.326 0 2.464.1 2.797.144v3.243l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.313h3.592l-.467 3.62h-3.125V24h6.122c.737 0 1.324-.587 1.324-1.312V1.313c0-.725-.587-1.313-1.324-1.313z" />
                 </svg>
@@ -101,8 +107,8 @@
             <!-- Instagram -->
             <a href="https://www.instagram.com/itz_me_chinmoy_impaired/" aria-label="Instagram"
                 class="social-icon group" target="_blank" rel="noopener noreferrer" title="Instagram">
-                <svg class="w-8 h-8 transition-colors" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                     <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
                     <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
@@ -112,7 +118,7 @@
             <!-- X (Twitter) -->
             <a href="https://x.com/Chinmoy_SH_" aria-label="X (Twitter)" class="social-icon group" target="_blank"
                 rel="noopener noreferrer" title="X (Twitter)">
-                <svg class="w-8 h-8 transition-colors" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path
                         d="M23 3a10.9 10.9 0 01-3.14.86 4.48 4.48 0 001.97-2.48 10.85 10.85 0 01-3.44 1.32 4.52 4.52 0 00-7.7 4.12A12.83 12.83 0 013 2.13 4.52 4.52 0 004.7 9.75a4.48 4.48 0 01-2.05-.57v.06a4.52 4.52 0 003.63 4.43 4.52 4.52 0 01-2.04.08 4.52 4.52 0 004.22 3.12 9 9 0 01-5.57 1.91A9.52 9.52 0 012 19.54a12.73 12.73 0 006.92 2.02c8.3 0 12.84-6.87 12.84-12.84 0-.2 0-.42-.02-.62A9.18 9.18 0 0023 3z" />
                 </svg>
@@ -121,142 +127,15 @@
         <!-- END Social Links -->
     </main>
 
-    <script src="script.js"></script>
-    <script>
-        const canvas = document.getElementById('networkCanvas');
-        const ctx = canvas.getContext('2d');
-        let width, height;
+    <!-- Dynamic Clock isolated at the very bottom center -->
+    <div id="currentTime"
+        class="fixed bottom-4 left-1/2 -translate-x-1/2 text-center text-gray-500 font-mono text-xs whitespace-nowrap z-10"
+        aria-live="polite" aria-atomic="true" title="Current UTC time">
+        --:--:-- UTC
+    </div>
 
-        // Track mouse position, starts off-page
-        const mouse = { x: null, y: null, radius: 150 };
-
-        // Resize canvas to fill window
-        function resize() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
-        }
-
-        window.addEventListener('resize', resize);
-        resize();
-
-        // Update mouse position or reset when leaving viewport
-        window.addEventListener('mousemove', e => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-        });
-
-        window.addEventListener('mouseout', () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
-
-        class Point {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.3;
-                this.vy = (Math.random() - 0.5) * 0.3;
-                this.radius = 1.5;
-                this.baseX = this.x;
-                this.baseY = this.y;
-            }
-
-            move() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                // Smooth edges: gently nudge back inside viewport
-                const margin = 20;
-                if (this.x < margin) this.vx += 0.05;
-                else if (this.x > width - margin) this.vx -= 0.05;
-
-                if (this.y < margin) this.vy += 0.05;
-                else if (this.y > height - margin) this.vy -= 0.05;
-
-                // Mouse repulsion if within radius
-                if (mouse.x !== null && mouse.y !== null) {
-                    let dx = this.x - mouse.x;
-                    let dy = this.y - mouse.y;
-                    let dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < mouse.radius) {
-                        let force = (mouse.radius - dist) / mouse.radius;
-                        let angle = Math.atan2(dy, dx);
-                        let repulseStrength = 2.5;
-
-                        this.vx += Math.cos(angle) * force * repulseStrength;
-                        this.vy += Math.sin(angle) * force * repulseStrength;
-                    }
-                }
-
-                // Always ease back to base position & damp velocity
-                this.vx += (this.baseX - this.x) * 0.003;
-                this.vy += (this.baseY - this.y) * 0.003;
-                this.vx *= 0.96;
-                this.vy *= 0.96;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-                ctx.fillStyle = 'rgba(14, 165, 233, 0.8)';
-                ctx.fill();
-            }
-        }
-
-        const pointsCount = 100;
-        const points = [];
-
-        for (let i = 0; i < pointsCount; i++) {
-            points.push(new Point());
-        }
-
-        function connectPoints() {
-            for (let i = 0; i < pointsCount; i++) {
-                for (let j = i + 1; j < pointsCount; j++) {
-                    let dx = points[i].x - points[j].x;
-                    let dy = points[i].y - points[j].y;
-                    let dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < 120) {
-                        let opacity = 1 - dist / 120;
-
-                        if (mouse.x !== null && mouse.y !== null) {
-                            let midX = (points[i].x + points[j].x) / 2;
-                            let midY = (points[i].y + points[j].y) / 2;
-                            let mdx = midX - mouse.x;
-                            let mdy = midY - mouse.y;
-                            let mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-
-                            if (mdist < mouse.radius) {
-                                opacity = Math.min(1, opacity + (mouse.radius - mdist) / mouse.radius);
-                            }
-                        }
-
-                        ctx.strokeStyle = `rgba(14, 165, 233, ${opacity * 0.3})`;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(points[i].x, points[i].y);
-                        ctx.lineTo(points[j].x, points[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            points.forEach(point => {
-                point.move();
-                point.draw();
-            });
-            connectPoints();
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-    </script>
+    <!-- Native Canvas Animation and Real-time Clock Logic -->
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

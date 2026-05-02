@@ -1,0 +1,47 @@
+/* Fade-in keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply fade-in animation */
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* Full viewport canvas behind everything */
+#networkCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: #e0f2fe;
+    /* Tailwind sky-100 */
+}
+
+/* Social icon styling - circular with only logo and smooth hover color */
+.social-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9999px;
+    /* full circle */
+    width: 44px;
+    height: 44px;
+    transition: color 0.3s ease;
+    color: rgba(14, 165, 233, 0.8);
+    /* Tailwind sky-500 */
+}
+
+.social-icon:hover {
+    color: rgba(14, 165, 233, 1);
+}

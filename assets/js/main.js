@@ -13,152 +13,174 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(updateClock, 1000);
     updateClock();
 
-    // --- 2. Particle Network Animation ---
+    // --- 2. Lightweight Particle Network Animation ---
     const canvas = document.getElementById('networkCanvas');
+    if (!canvas) return;
+
     const ctx = canvas.getContext('2d');
-    let particlesArray = [];
-    let w, h;
+    if (!ctx) return;
 
-    // Manage screen resize with debouncing to save performance
-    let resizeTimer;
-    function resize() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = window.innerHeight;
-            initParticles();
-        }, 100);
-    }
-    window.addEventListener('resize', resize);
-
-    // Interaction State Tracking
+    const connectionDistance = 110;
+    const connectionDistanceSquared = connectionDistance * connectionDistance;
+    const nodeColor = '14, 165, 233';
     const mouse = { x: null, y: null, radius: 140 };
+    const particles = [];
+    let width = 0;
+    let height = 0;
+    let animationFrame;
+    let resizeFrame;
+    let lastFrameTime = 0;
+    let isPageVisible = !document.hidden;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    window.addEventListener('mousemove', (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-    });
-    window.addEventListener('mouseout', () => {
-        mouse.x = null;
-        mouse.y = null;
-    });
-
-    // Mobile Touch Support
-    window.addEventListener('touchmove', (e) => {
-        mouse.x = e.touches[0].clientX;
-        mouse.y = e.touches[0].clientY;
-    });
-    window.addEventListener('touchend', () => {
-        mouse.x = null;
-        mouse.y = null;
-    });
-
-    // Particle Class Definitions
     class Particle {
         constructor() {
-            this.x = Math.random() * w;
-            this.y = Math.random() * h;
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
             this.vx = (Math.random() - 0.5) * 1.0;
             this.vy = (Math.random() - 0.5) * 1.0;
-            this.radius = Math.random() * 2 + 1.5;
+            this.radius = Math.random() * 1.5 + 1.75;
         }
 
-        update() {
-            // Update Positions
-            this.x += this.vx;
-            this.y += this.vy;
+        update(delta) {
+            this.x += this.vx * delta;
+            this.y += this.vy * delta;
 
-            // Deflect particles off the screen boundaries
-            if (this.x < 0 || this.x > w) this.vx = -this.vx;
-            if (this.y < 0 || this.y > h) this.vy = -this.vy;
+            if (this.x < 0 || this.x > width) this.vx = -this.vx;
+            if (this.y < 0 || this.y > height) this.vy = -this.vy;
 
-            // Apply mouse interaction (gentle repulsion)
             if (mouse.x !== null && mouse.y !== null) {
-                let dx = this.x - mouse.x;
-                let dy = this.y - mouse.y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const distanceSquared = dx * dx + dy * dy;
 
-                if (distance < mouse.radius) {
-                    const forceDirectionX = dx / distance;
-                    const forceDirectionY = dy / distance;
+                if (distanceSquared < mouse.radius * mouse.radius && distanceSquared > 0) {
+                    const distance = Math.sqrt(distanceSquared);
                     const force = (mouse.radius - distance) / mouse.radius;
-
-                    // Push away gently
-                    this.x += forceDirectionX * force * 1.5;
-                    this.y += forceDirectionY * force * 1.5;
+                    this.x += (dx / distance) * force * delta * 0.09;
+                    this.y += (dy / distance) * force * delta * 0.09;
                 }
             }
         }
-
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(14, 165, 233, 0.9)'; // Tailwind Sky-500
-            ctx.fill();
-        }
     }
 
-    // Initialization logic
     function initParticles() {
-        particlesArray = [];
-        // Scale particle count dynamically based on screen real estate
-        let numberOfParticles = (w * h) / 10000;
-        // Place a cap to prevent lag on extra-large monitors
-        if (numberOfParticles > 120) numberOfParticles = 120;
+        particles.length = 0;
+        const area = width * height;
+        const particleCount = Math.min(120, Math.max(36, Math.round(area / 11000)));
 
-        for (let i = 0; i < numberOfParticles; i++) {
-            particlesArray.push(new Particle());
+        for (let index = 0; index < particleCount; index += 1) {
+            particles.push(new Particle());
         }
     }
 
-    // Render/Animation Loop
-    function animate() {
-        ctx.clearRect(0, 0, w, h);
+    function resize() {
+        cancelAnimationFrame(resizeFrame);
+        resizeFrame = requestAnimationFrame(() => {
+            const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+            const nextWidth = window.innerWidth;
+            const nextHeight = window.innerHeight;
 
-        // Update and draw each particle
-        for (let i = 0; i < particlesArray.length; i++) {
-            particlesArray[i].update();
-            particlesArray[i].draw();
+            width = nextWidth;
+            height = nextHeight;
+            canvas.width = Math.round(width * pixelRatio);
+            canvas.height = Math.round(height * pixelRatio);
+            canvas.style.width = `${width}px`;
+            canvas.style.height = `${height}px`;
+            ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+            initParticles();
+        });
+    }
 
-            // Calculate Particle-to-Particle connections
-            for (let j = i; j < particlesArray.length; j++) {
-                let dx = particlesArray[i].x - particlesArray[j].x;
-                let dy = particlesArray[i].y - particlesArray[j].y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
+    function updatePointer(clientX, clientY) {
+        mouse.x = clientX;
+        mouse.y = clientY;
+    }
 
-                if (distance < 110) {
+    function clearPointer() {
+        mouse.x = null;
+        mouse.y = null;
+    }
+
+    function draw(timestamp) {
+        if (!isPageVisible) return;
+
+        const elapsed = lastFrameTime ? Math.min(timestamp - lastFrameTime, 32) : 16;
+        const delta = elapsed / 16.67;
+        lastFrameTime = timestamp;
+
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = 'rgba(14, 165, 233, 0.9)';
+        ctx.strokeStyle = `rgba(${nodeColor}, 0.35)`;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+
+        for (const particle of particles) {
+            if (!reducedMotion) particle.update(delta);
+            ctx.moveTo(particle.x + particle.radius, particle.y);
+            ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        }
+        ctx.fill();
+
+        for (let index = 0; index < particles.length; index += 1) {
+            const current = particles[index];
+
+            for (let nextIndex = index + 1; nextIndex < particles.length; nextIndex += 1) {
+                const next = particles[nextIndex];
+                const dx = current.x - next.x;
+                const dy = current.y - next.y;
+                const distanceSquared = dx * dx + dy * dy;
+
+                if (distanceSquared < connectionDistanceSquared) {
+                    const proximity = 1 - Math.sqrt(distanceSquared) / connectionDistance;
+                    const opacity = 0.14 + proximity * 0.62;
+                    ctx.strokeStyle = `rgba(${nodeColor}, ${opacity})`;
+                    ctx.lineWidth = 0.85 + proximity * 1.35;
                     ctx.beginPath();
-                    // Glow/opacity relative to distance
-                    ctx.strokeStyle = `rgba(14, 165, 233, ${1 - distance / 110})`;
-                    ctx.lineWidth = 1;
-                    ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
-                    ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                    ctx.moveTo(current.x, current.y);
+                    ctx.lineTo(next.x, next.y);
                     ctx.stroke();
                 }
             }
 
-            // Draw Interactive "Grab" lines from Mouse to Particle
             if (mouse.x !== null && mouse.y !== null) {
-                let dx = particlesArray[i].x - mouse.x;
-                let dy = particlesArray[i].y - mouse.y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
+                const dx = current.x - mouse.x;
+                const dy = current.y - mouse.y;
+                const distanceSquared = dx * dx + dy * dy;
 
-                if (distance < mouse.radius) {
+                if (distanceSquared < mouse.radius * mouse.radius) {
+                    const proximity = 1 - Math.sqrt(distanceSquared) / mouse.radius;
+                    ctx.strokeStyle = `rgba(${nodeColor}, ${0.16 + proximity * 0.72})`;
+                    ctx.lineWidth = 1.4 + proximity * 1.2;
                     ctx.beginPath();
-                    ctx.strokeStyle = `rgba(14, 165, 233, ${1 - distance / mouse.radius})`;
-                    ctx.lineWidth = 1.2;
-                    ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                    ctx.moveTo(current.x, current.y);
                     ctx.lineTo(mouse.x, mouse.y);
                     ctx.stroke();
                 }
             }
         }
-        requestAnimationFrame(animate);
+
+        if (!reducedMotion) {
+            animationFrame = requestAnimationFrame(draw);
+        }
     }
 
-    // Start up
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-    initParticles();
-    animate();
+    window.addEventListener('resize', resize, { passive: true });
+    window.addEventListener('pointermove', (event) => updatePointer(event.clientX, event.clientY), { passive: true });
+    window.addEventListener('pointerleave', clearPointer, { passive: true });
+    document.addEventListener('visibilitychange', () => {
+        isPageVisible = !document.hidden;
+        if (isPageVisible && !reducedMotion) {
+            lastFrameTime = 0;
+            cancelAnimationFrame(animationFrame);
+            animationFrame = requestAnimationFrame(draw);
+        } else {
+            cancelAnimationFrame(animationFrame);
+        }
+    });
+
+    resize();
+    animationFrame = requestAnimationFrame(draw);
 });

@@ -32,12 +32,18 @@ Chinmoysh-web/
 │   ├── images/             # Static image assets (e.g., OG preview images)
 │   └── icons/              # Favicon and manifest files
 ├── index.html              # Main presentation layer & SEO data
+├── projects.html           # Editable project cards and project links
 ├── CNAME                   # Custom domain routing
 ├── README.md               # Project documentation
 ├── LICENSE                 # License information
 ├── robots.txt              # Search engine crawler instructions
 └── sitemap.xml             # XML sitemap for SEO
 ```
+
+### Updating projects
+
+Open `projects.html` and edit the project cards inside the `<main>` element. Each card
+contains the project status, name, description, and destination link.
 
 ## 🏁 Getting Started
 

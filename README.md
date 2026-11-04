@@ -67,4 +67,4 @@ Since this project relies on native web technologies without a build pipeline, r
 * **Instagram**: [@itz_me_chinmoy_impaired](https://www.instagram.com/itz_me_chinmoy_impaired/)
 
 ---
-*“Engineering isn't just writing lines of code. It's understanding how computers process, how systems actually work. I build with relentless simplicity and deep intention.” — Chinmoy*
+**“Engineering isn't just writing lines of code. It's understanding how computers process, how systems actually work. I build with relentless simplicity and deep intention.” — Chinmoy*

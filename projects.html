@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projects | Chinmoy Kumar Biswas</title>
+
+    <meta name="description"
+        content="Explore projects by Chinmoy Kumar Biswas, a software engineer building with simplicity and intention.">
+    <meta name="author" content="Chinmoy Kumar Biswas">
+    <link rel="canonical" href="https://chinmoysh.me/projects.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chinmoysh.me/projects.html">
+    <meta property="og:title" content="Projects | Chinmoy Kumar Biswas">
+    <meta property="og:description"
+        content="Explore projects by Chinmoy Kumar Biswas, a software engineer building with simplicity and intention.">
+    <meta property="og:image" content="https://chinmoysh.me/images/chinmoy-kumar-biswas.png">
+    <meta property="og:image:alt" content="Portrait of Chinmoy Kumar Biswas">
+    <meta property="og:site_name" content="Chinmoy Kumar Biswas Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://chinmoysh.me/projects.html">
+    <meta name="twitter:title" content="Projects | Chinmoy Kumar Biswas">
+    <meta name="twitter:description"
+        content="Explore projects by Chinmoy Kumar Biswas, a software engineer building with simplicity and intention.">
+    <meta name="twitter:image" content="https://chinmoysh.me/images/chinmoy-kumar-biswas.png">
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="min-h-screen bg-sky-50 text-gray-800 px-6 py-12 md:px-10">
+    <canvas id="networkCanvas" aria-hidden="true"></canvas>
+
+    <header class="relative z-10 mx-auto mb-12 max-w-5xl fade-in opacity-0 translate-y-5"
+        style="animation-delay: 0.2s;">
+        <a href="index.html" class="project-card-link font-mono text-sm" aria-label="Back to home">
+            &larr; Back home
+        </a>
+        <div class="mt-10 max-w-2xl">
+            <p class="mb-3 font-mono text-sm uppercase tracking-[0.3em] text-sky-600">Selected work</p>
+            <h1 class="text-4xl font-extrabold uppercase tracking-tight text-sky-700 md:text-6xl">Projects</h1>
+            <p class="mt-5 text-lg leading-relaxed text-gray-600">
+                A collection of ideas, experiments, and products built with clarity and purpose.
+            </p>
+        </div>
+    </header>
+
+    <main class="relative z-10 mx-auto grid max-w-5xl gap-6 md:grid-cols-2 fade-in opacity-0 translate-y-5"
+        style="animation-delay: 0.4s;">
+        <!-- Edit the project cards below to update your projects, descriptions, and links. -->
+        <article class="project-card rounded-2xl p-7">
+            <div class="mb-8 flex items-center justify-between">
+                <span class="font-mono text-sm text-sky-600">01 / featured</span>
+                <span class="h-2 w-2 rounded-full bg-sky-500 shadow-[0_0_12px_rgba(14,165,233,0.8)]"></span>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800">Chinmoysh Portfolio</h2>
+            <p class="mt-4 leading-relaxed text-gray-600">
+                A minimalist, terminal-inspired portfolio focused on clear communication, thoughtful engineering, and
+                a lightweight browsing experience.
+            </p>
+            <a href="index.html" class="project-card-link mt-7 inline-flex items-center gap-2 font-mono text-sm"
+                aria-label="Visit Chinmoysh Portfolio">
+                View project <span aria-hidden="true">&rarr;</span>
+            </a>
+        </article>
+
+        <article class="project-card rounded-2xl p-7">
+            <div class="mb-8 flex items-center justify-between">
+                <span class="font-mono text-sm text-sky-600">02 / in progress</span>
+                <span class="h-2 w-2 rounded-full bg-amber-400 shadow-[0_0_12px_rgba(251,191,36,0.8)]"></span>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800">Your Project Name</h2>
+            <p class="mt-4 leading-relaxed text-gray-600">
+                Replace this text with a concise description of your project, the problem it solves, and what makes it
+                meaningful.
+            </p>
+            <a href="https://github.com/Chinmoy-sh" class="project-card-link mt-7 inline-flex items-center gap-2 font-mono text-sm"
+                target="_blank" rel="noopener noreferrer" aria-label="View more work on GitHub">
+                View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+        </article>
+
+        <article class="project-card rounded-2xl p-7">
+            <div class="mb-8 flex items-center justify-between">
+                <span class="font-mono text-sm text-sky-600">03 / coming soon</span>
+                <span class="h-2 w-2 rounded-full bg-violet-400 shadow-[0_0_12px_rgba(167,139,250,0.8)]"></span>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800">Another Project</h2>
+            <p class="mt-4 leading-relaxed text-gray-600">
+                Add another project by changing this title, description, status label, and destination link.
+            </p>
+            <a href="https://github.com/Chinmoy-sh" class="project-card-link mt-7 inline-flex items-center gap-2 font-mono text-sm"
+                target="_blank" rel="noopener noreferrer" aria-label="View more work on GitHub">
+                View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+        </article>
+    </main>
+
+    <div id="currentTime"
+        class="relative z-10 mx-auto mt-12 max-w-5xl text-center text-gray-500 font-mono text-xs whitespace-nowrap"
+        aria-live="polite" aria-atomic="true" title="Current UTC time">
+        --:--:-- UTC
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

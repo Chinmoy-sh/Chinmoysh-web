@@ -27,12 +27,13 @@ Chinmoysh-web/
 ├── assets/
 │   ├── css/
 │   │   └── style.css       # Custom keyframes and layout overrides
-│   ├── js/
-│   │   └── main.js         # Canvas engine & UTC clock logic
-│   ├── images/             # Static image assets (e.g., OG preview images)
-│   └── icons/              # Favicon and manifest files
+│   └── js/
+│       └── main.js         # Canvas engine & UTC clock logic
 ├── index.html              # Main presentation layer & SEO data
 ├── projects.html           # Editable project cards and project links
+├── images/
+│   └── chinmoy-kumar-biswas.png # Social preview and profile image
+├── favicon.ico              # Site favicon
 ├── CNAME                   # Custom domain routing
 ├── README.md               # Project documentation
 ├── LICENSE                 # License information

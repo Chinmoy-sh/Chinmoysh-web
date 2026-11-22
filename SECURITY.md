@@ -1,21 +1,25 @@
 # Security Policy
 
-## Supported Versions
+## Supported versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+This is a static portfolio site. Security fixes are applied to the current
+`main` branch and the live deployment. Older commits and unpublished versions
+are not supported.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+## Reporting a vulnerability
 
-## Reporting a Vulnerability
+Please do not report security vulnerabilities in a public issue.
 
-Use this section to tell people how to report a vulnerability.
+Use GitHub's private **Report a vulnerability** option on the repository's
+Security tab:
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+<https://github.com/Chinmoy-sh/Chinmoysh-web/security>
+
+Include the affected URL or file, a clear description of the issue, steps to
+reproduce it, and any relevant screenshots or proof of concept. Reports
+submitted through the private reporting channel are acknowledged as soon as
+possible, with an initial response target of seven days.
+
+If private vulnerability reporting is unavailable, contact the maintainer
+through [GitHub](https://github.com/Chinmoy-sh) and avoid posting sensitive
+details publicly.
